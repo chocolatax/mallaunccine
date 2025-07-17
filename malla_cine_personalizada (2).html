@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Cine UNC - Personalizada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: var(--bg, linear-gradient(to right, #ffe0f0, #fce4ec));
+      transition: background 0.5s ease;
+    }
+    h1 {
+      font-family: 'Lora', serif;
+      text-align: center;
+      color: #b71c5b;
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+    }
+    .linea-tiempo {
+      display: flex;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      width: max-content;
+    }
+    .anio {
+      min-width: 250px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .anio h2 {
+      font-family: 'Lora', serif;
+      color: #880e4f;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .materia {
+      background: linear-gradient(to right, #f8bbd0, #f48fb1);
+      color: #4a001f;
+      padding: 0.8rem 1rem;
+      margin: 0.4rem 0;
+      border-left: 6px solid #ad1457;
+      border-radius: 0.6rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .bloqueada {
+      background: #eee !important;
+      color: #999;
+      border-left-color: #ccc;
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+    .aprobada {
+      background: linear-gradient(to right, #c8e6c9, #a5d6a7) !important;
+      border-left-color: #388e3c !important;
+    }
+    .nota {
+      display: none;
+      margin-top: 0.5rem;
+    }
+    .materia.open .nota {
+      display: block;
+    }
+    .nota input {
+      width: 100%;
+      padding: 0.4rem;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .fondo-selector {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .fondo-selector select {
+      font-size: 1rem;
+      padding: 0.4rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Licenciatura en Cine y Artes Audiovisuales - UNC</h1>
+
+  <div class="fondo-selector">
+    Fondo personalizado: 
+    <select id="fondo" onchange="cambiarFondo(this.value)">
+      <option value="linear-gradient(to right, #ffe0f0, #fce4ec)">Rosa pastel (default)</option>
+      <option value="linear-gradient(to right, #e1f5fe, #b3e5fc)">Celeste claro</option>
+      <option value="linear-gradient(to right, #f3e5f5, #ce93d8)">Lila suave</option>
+      <option value="linear-gradient(to right, #fbe9e7, #ffccbc)">Durazno</option>
+      <option value="#ffffff">Blanco</option>
+    </select>
+  </div>
+
+  <div class="linea-tiempo">
+    <div class="anio">
+      <h2>Primer Año</h2>
+      <div class="materia" id="intro">Introducción a los estudios audiovisuales<div class="nota"><label>Nota: <input type="text" data-id="intro"></label></div></div>
+      <div class="materia" id="realizacion1">Realización audiovisual I<div class="nota"><label>Nota: <input type="text" data-id="realizacion1"></label></div></div>
+      <div class="materia" id="foto1">Fotografía I<div class="nota"><label>Nota: <input type="text" data-id="foto1"></label></div></div>
+      <div class="materia" id="sonido1">Sonido I<div class="nota"><label>Nota: <input type="text" data-id="sonido1"></label></div></div>
+      <div class="materia" id="modernidad">Arte y modernidad<div class="nota"><label>Nota: <input type="text" data-id="modernidad"></label></div></div>
+      <div class="materia" id="historia">Historia del cine y las artes audiovisuales<div class="nota"><label>Nota: <input type="text" data-id="historia"></label></div></div>
+      <div class="materia" id="narrativa">Narrativa audiovisual<div class="nota"><label>Nota: <input type="text" data-id="narrativa"></label></div></div>
+      <div class="materia" id="tecnica">Técnica de registro y postproducción<div class="nota"><label>Nota: <input type="text" data-id="tecnica"></label></div></div>
+    </div>
+
+    <div class="anio">
+      <h2>Segundo Año</h2>
+      <div class="materia bloqueada" id="realizacion2">Realización audiovisual II<div class="nota"><label>Nota: <input type="text" data-id="realizacion2"></label></div></div>
+      <div class="materia bloqueada" id="foto2">Fotografía II<div class="nota"><label>Nota: <input type="text" data-id="foto2"></label></div></div>
+      <div class="materia bloqueada" id="sonido2">Sonido II<div class="nota"><label>Nota: <input type="text" data-id="sonido2"></label></div></div>
+      <div class="materia bloqueada" id="guion1">Guión I<div class="nota"><label>Nota: <input type="text" data-id="guion1"></label></div></div>
+      <div class="materia bloqueada" id="montaje1">Montaje I<div class="nota"><label>Nota: <input type="text" data-id="montaje1"></label></div></div>
+      <div class="materia bloqueada" id="diractores">Dirección de actores<div class="nota"><label>Nota: <input type="text" data-id="diractores"></label></div></div>
+      <div class="materia bloqueada" id="produccion1">Producción I: Ficción<div class="nota"><label>Nota: <input type="text" data-id="produccion1"></label></div></div>
+      <div class="materia bloqueada" id="dirarte">Dirección de arte<div class="nota"><label>Nota: <input type="text" data-id="dirarte"></label></div></div>
+    </div>
+  </div>
+
+  <script>
+    const correlativas = {
+      "realizacion2": ["realizacion1"],
+      "foto2": ["foto1"],
+      "sonido2": ["sonido1", "realizacion1"],
+      "guion1": ["intro", "realizacion1"],
+      "montaje1": ["intro", "realizacion1"],
+      "diractores": ["intro", "realizacion1"],
+      "produccion1": ["intro", "realizacion1", "tecnica"],
+      "dirarte": ["intro", "realizacion1"]
+    };
+
+    document.querySelectorAll(".materia").forEach(el => {
+      const id = el.id;
+
+      if (localStorage.getItem("estado-" + id) === "aprobada") {
+        el.classList.add("aprobada");
+      }
+      if (localStorage.getItem("notas-" + id)) {
+        el.querySelector("input").value = localStorage.getItem("notas-" + id);
+      }
+
+      el.addEventListener("click", e => {
+        if (!el.classList.contains("bloqueada")) {
+          if (e.target.tagName !== "INPUT") {
+            el.classList.toggle("aprobada");
+            el.classList.toggle("open");
+            localStorage.setItem("estado-" + id, el.classList.contains("aprobada") ? "aprobada" : "");
+            actualizarDesbloqueos();
+          }
+        }
+      });
+
+      el.querySelector("input").addEventListener("input", e => {
+        localStorage.setItem("notas-" + id, e.target.value);
+      });
+    });
+
+    function actualizarDesbloqueos() {
+      for (const [materia, reqs] of Object.entries(correlativas)) {
+        const habilitada = reqs.every(id => document.getElementById(id).classList.contains("aprobada"));
+        const matDiv = document.getElementById(materia);
+        if (habilitada) {
+          matDiv.classList.remove("bloqueada");
+        } else {
+          matDiv.classList.add("bloqueada");
+        }
+      }
+    }
+
+    function cambiarFondo(valor) {
+      document.body.style.setProperty("--bg", valor);
+      localStorage.setItem("fondo-personalizado", valor);
+    }
+
+    const fondoGuardado = localStorage.getItem("fondo-personalizado");
+    if (fondoGuardado) {
+      document.body.style.setProperty("--bg", fondoGuardado);
+      document.getElementById("fondo").value = fondoGuardado;
+    }
+
+    actualizarDesbloqueos();
+  </script>
+</body>
+</html>
